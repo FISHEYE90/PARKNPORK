@@ -1,0 +1,1483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PARK N PORK — Step 1 Base Product System</title>
+  <!-- SEO & Mobile Tuning -->
+  <meta name="description" content="Park N Pork elite wood-fired grill and crispy fried pork Ghana. Base menu pricing & food system matches.">
+  <!-- Link Compiled Tailwind 4 Style Sheet -->
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body class="grill-grid text-zinc-100 min-h-screen selection:bg-brand-red bg-brand-charcoal selection:text-white">
+
+  <!-- STICKY HEADER & NAVBAR -->
+  <header class="sticky top-0 z-40 w-full bg-brand-charcoal/90 backdrop-blur-md border-b border-zinc-900 max-w-7xl mx-auto">
+    <div class="px-4 sm:px-6 lg:px-8 h-18 sm:h-20 flex items-center justify-between">
+      
+      <!-- Logo brand trigger (High fidelity screenshot match) -->
+      <a href="#" class="flex flex-col select-none py-1.5 focus:outline-none">
+        <span class="font-display font-black text-lg sm:text-xl tracking-tight text-white uppercase leading-none">
+          PARK N PORK
+        </span>
+        <span class="text-[8px] sm:text-[9px] text-[#f3ba0b] font-extrabold uppercase tracking-widest mt-0.5">
+          AWOSHIE FOOD ORDERING
+        </span>
+      </a>
+
+      <!-- Center navigation links list -->
+      <nav class="hidden md:flex items-center gap-8 text-xs font-mono font-bold tracking-widest text-zinc-400 uppercase select-none">
+        <a href="./#header" class="hover:text-brand-red-light transition-colors relative py-1">Home</a>
+        <a href="./#product-grid" class="text-white hover:text-brand-red-light transition-colors relative py-1">Menu</a>
+        <a href="./specials.html" class="hover:text-brand-red-light transition-colors relative py-1">Special</a>
+        <a href="./#location-section" class="hover:text-brand-red-light transition-colors relative py-1">Location</a>
+        <a href="./#contact-footer" class="hover:text-brand-red-light transition-colors relative py-1">Contact</a>
+      </nav>
+
+      <!-- Cart Trigger & Mobile hamburger row (Screenshot Matching Style) -->
+      <div class="flex items-center gap-1.5">
+        
+        <!-- Search button to focus search input -->
+        <button 
+          id="nav-search-btn" 
+          type="button" 
+          class="flex items-center justify-center bg-transparent border-none p-1 text-zinc-100 hover:text-white cursor-pointer focus:outline-none transition-all duration-200 relative group"
+          title="Search Menu"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4.5 w-4.5 text-zinc-300 group-hover:text-[#f3ba0b] transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </button>
+
+        <!-- Cart button styled exactly like screenshot but with real cart icon -->
+        <button 
+          id="nav-cart-btn" 
+          type="button" 
+          class="flex items-center justify-center bg-transparent border-none p-1 text-zinc-100 hover:text-white cursor-pointer focus:outline-none transition-all duration-200 relative group"
+          title="Shopping Cart Platter"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4.5 w-4.5 text-zinc-300 group-hover:text-[#f3ba0b] transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="9" cy="21" r="1"></circle>
+            <circle cx="20" cy="21" r="1"></circle>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+          </svg>
+          <span id="nav-cart-badge" class="absolute -top-1 -right-1 bg-[#f3ba0b] text-black text-[9px] font-black font-mono w-4.5 h-4.5 flex items-center justify-center rounded-full shadow-md border border-neutral-950 select-none transition-transform duration-200">0</span>
+        </button>
+
+        <!-- Mobile hamburger drawer toggle (For compact viewports) -->
+        <button 
+          id="mobile-nav-toggle" 
+          type="button" 
+          class="md:hidden p-1 bg-transparent border-none text-zinc-400 hover:text-white focus:outline-none cursor-pointer"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Collapsible Mobile nav menu dropdown container -->
+    <div id="mobile-nav-menu" class="hidden md:hidden border-t border-zinc-900 bg-brand-charcoal text-center py-4 flex flex-col gap-3 font-mono text-xs font-bold uppercase tracking-widest text-zinc-400">
+      <a href="./" class="py-2 hover:bg-zinc-950 hover:text-white transition-all">Home</a>
+      <a href="./#product-grid" class="py-2 text-white bg-zinc-950/40 hover:bg-zinc-950 hover:text-white transition-all">Menu</a>
+      <a href="./specials.html" class="py-2 hover:bg-zinc-950 hover:text-white transition-all">Special</a>
+      <a href="./#location-section" class="py-2 hover:bg-zinc-950 hover:text-white transition-all">Location</a>
+      <a href="./#contact-footer" class="py-2 hover:bg-zinc-950 hover:text-white transition-all">Contact</a>
+    </div>
+  </header>
+
+  <!-- MAIN APP CONTAINER WRAPPER -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 md:pb-12 pt-0">
+    
+    <!-- REDESIGNED PREMIUM HERO SECTION (Modern Food Delivery Layout) -->
+    <section class="relative w-full rounded-t-2xl overflow-hidden border-t border-x border-zinc-900 bg-black p-6 sm:p-8 md:p-12 lg:p-16 flex flex-col lg:flex-row items-center gap-10 min-h-[calc(100vh-72px)] md:min-h-[calc(100vh-80px)] flex-wrap lg:flex-nowrap" style="min-height: calc(100vh - 80px);">
+      
+      <!-- Subtle dot pattern background -->
+      <div class="absolute inset-0 opacity-[0.12] pointer-events-none select-none z-0" style="background-image: radial-gradient(#f3ba0b 1px, transparent 1px); background-size: 20px 20px;"></div>
+      
+      <!-- Subtle warm red/orange glow behind the food image -->
+      <div class="absolute top-[10%] right-[-5%] w-[60%] h-[80%] bg-gradient-to-br from-[#A31D1D]/20 via-[#f3ba0b]/5 to-transparent rounded-full filter blur-[120px] pointer-events-none select-none z-0"></div>
+      
+      <!-- LEFT CONTENT COLUMN (60% width on widescreen, vertically centered) -->
+      <div class="flex-grow-[1.5] flex-shrink-0 flex-basis-0 text-left flex flex-col items-start justify-center z-10 max-w-2xl">
+        
+        <!-- Premium Badge -->
+        <div class="inline-flex items-center gap-2 bg-[#f3ba0b]/10 border border-[#f3ba0b]/20 px-4 py-2 rounded-full text-[10px] sm:text-xs font-mono font-black text-[#f3ba0b] uppercase tracking-wider mb-6 select-none animate-fade-in">
+          🔥 Awoshie's Favorite Fried Pork Spot
+        </div>
+        
+        <!-- Main Heading -->
+        <h1 class="font-display text-4xl sm:text-5xl lg:text-7xl font-black text-white leading-[1.05] tracking-tight uppercase mb-5 select-none text-balance">
+          CRISPY FRIED PORK,<br />
+          <span class="text-[#f3ba0b]">READY IN MINUTES.</span>
+        </h1>
+        
+        <!-- Supporting Text -->
+        <p class="text-zinc-350 text-zinc-300 text-xs sm:text-sm md:text-base leading-relaxed mb-8 max-w-xl font-sans">
+          Get hot, seasoned, and golden-crisp wood-fired pork chunks delivered burning fresh to your doorstep. Savour Awoshie's legendary crunch anywhere across Accra with our blazing fast delivery network. Cooked fresh daily, seasoned to absolute perfection.
+        </p>
+        
+        <!-- CTA Actions Block -->
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto mb-10">
+          <a 
+            href="#product-grid" 
+            class="px-8 py-4 bg-brand-red hover:bg-brand-red-light text-white text-xs sm:text-sm font-extrabold uppercase tracking-widest rounded-lg transition-all duration-300 shadow-lg shadow-brand-red/20 active:scale-98 focus:outline-none flex items-center justify-center gap-2 border border-brand-red select-none text-center"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4.5 w-4.5 text-zinc-100" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="9" cy="21" r="1"></circle>
+              <circle cx="20" cy="21" r="1"></circle>
+              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+            </svg>
+            Order Now
+          </a>
+          <a 
+            href="#category-list" 
+            class="px-8 py-4 bg-zinc-900/90 hover:bg-zinc-800 border border-zinc-800 text-zinc-200 hover:text-white text-xs sm:text-sm font-extrabold uppercase tracking-widest rounded-lg transition-all duration-300 active:scale-98 focus:outline-none flex items-center justify-center gap-2 select-none text-center"
+          >
+            View Menu
+          </a>
+        </div>
+        
+        <!-- Brand Trust Indicators Block (Below buttons, horizontal matching premium UI layout) -->
+        <div class="flex flex-wrap items-center gap-y-4 gap-x-6 sm:gap-x-0 border-t border-zinc-900/80 pt-6 w-full select-none">
+          <!-- Indicator 1 -->
+          <div class="flex items-center gap-3 pr-6 sm:pr-8">
+            <span class="text-[#f3ba0b] text-2xl select-none leading-none">★</span>
+            <div class="flex flex-col text-left">
+              <span class="text-white text-[13px] sm:text-sm font-black font-display leading-[1.1]">4.8</span>
+              <span class="text-zinc-400 text-[9px] font-mono tracking-wider uppercase">RATING</span>
+            </div>
+          </div>
+          <!-- Divider -->
+          <div class="h-8 w-px bg-zinc-900 hidden sm:block"></div>
+          <!-- Indicator 2 -->
+          <div class="flex items-center gap-3 px-0 sm:px-8">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#f3ba0b] select-none shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="3" width="14" height="12" rx="2" />
+              <path d="M16 8h4l3 3v4h-7V8z" />
+              <circle cx="6.5" cy="18.5" r="1.5" />
+              <circle cx="18.5" cy="18.5" r="1.5" />
+            </svg>
+            <div class="flex flex-col text-left">
+              <span class="text-white text-[13px] sm:text-sm font-black font-display leading-[1.1]">FAST</span>
+              <span class="text-zinc-400 text-[9px] font-mono tracking-wider uppercase">DELIVERY</span>
+            </div>
+          </div>
+          <!-- Divider -->
+          <div class="h-8 w-px bg-zinc-900 hidden sm:block"></div>
+          <!-- Indicator 3 -->
+          <div class="flex items-center gap-3 pl-0 sm:pl-8">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-emerald-500 select-none shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 3.5 0 8.5C17 15 15 18 11 20z" />
+              <path d="M19 2c-2.26 4.33-5.27 7.14-8 10" />
+            </svg>
+            <div class="flex flex-col text-left">
+              <span class="text-white text-[13px] sm:text-sm font-black font-display leading-[1.1]">FRESH</span>
+              <span class="text-zinc-400 text-[9px] font-mono tracking-wider uppercase">DAILY</span>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+      
+      <!-- RIGHT IMAGE COLUMN (Completely customized dynamic sizing for maximum desktop visual dominance) -->
+      <div class="w-full lg:w-[48%] flex-grow flex items-center justify-center lg:justify-end relative min-h-[320px] sm:min-h-[420px] lg:min-h-[520px] xl:min-h-[580px] mt-8 lg:mt-0 select-none pointer-events-none z-10">
+        
+        <!-- Dominate Layout Image Wrapper with studio backdrop highlight -->
+        <div class="relative w-full max-w-[420px] sm:max-w-[480px] lg:max-w-none flex items-center justify-center lg:justify-end">
+          
+          <!-- High intensity concentrated ambient light centered directly behind the plate to ground it -->
+          <div class="absolute w-[85%] h-[85%] bg-gradient-to-tr from-[#A31D1D]/35 to-[#f3ba0b]/25 rounded-full filter blur-[65px] opacity-90 z-0"></div>
+          
+          <img 
+            src="/src/assets/images/crispy_pork_transparent_1780726002162.png" 
+            alt="Park N Pork Elite Spicy Fried Pork Chunks" 
+            class="w-full h-auto max-h-[320px] sm:max-h-[420px] lg:max-h-[520px] xl:max-h-[600px] object-contain filter drop-shadow-[0_24px_48px_rgba(0,0,0,0.92)] drop-shadow-[0_12px_24px_rgba(163,29,29,0.4)] transition-all duration-700 hover:scale-[1.04] hover:rotate-2 relative z-10"
+            referrerpolicy="no-referrer"
+          />
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- BOTTOM STATS BAR attached directly below the hero -->
+    <section class="grid grid-cols-2 md:grid-cols-4 gap-0 border-b border-x border-zinc-900 rounded-b-2xl bg-black select-none divide-x divide-zinc-900/60 divide-y md:divide-y-0 divide-zinc-900 mb-12">
+      <!-- Stat 1 -->
+      <div class="p-6 sm:p-8 flex flex-col items-center justify-center text-center">
+        <span class="font-display font-black text-3xl sm:text-4xl lg:text-5xl text-[#f3ba0b] tracking-tight leading-none mb-2">500+</span>
+        <span class="text-[10px] font-mono tracking-widest uppercase font-bold text-zinc-450 text-zinc-400">Orders Served</span>
+      </div>
+      <!-- Stat 2 -->
+      <div class="p-6 sm:p-8 flex flex-col items-center justify-center text-center">
+        <span class="font-display font-black text-3xl sm:text-4xl lg:text-5xl text-[#f3ba0b] tracking-tight leading-none mb-2 flex items-center justify-center gap-0.5">
+          4.8★
+        </span>
+        <span class="text-[10px] font-mono tracking-widest uppercase font-bold text-zinc-450 text-zinc-400">Customer Rating</span>
+      </div>
+      <!-- Stat 3 -->
+      <div class="p-6 sm:p-8 flex flex-col items-center justify-center text-center">
+        <span class="font-display font-black text-3xl sm:text-4xl lg:text-5xl text-[#f3ba0b] tracking-tight leading-none mb-2">15 MIN</span>
+        <span class="text-[10px] font-mono tracking-widest uppercase font-bold text-zinc-450 text-zinc-400">Average Prep Time</span>
+      </div>
+      <!-- Stat 4 -->
+      <div class="p-6 sm:p-8 flex flex-col items-center justify-center text-center">
+        <span class="font-display font-black text-3xl sm:text-4xl lg:text-5xl text-[#f3ba0b] tracking-tight leading-none mb-2">100%</span>
+        <span class="text-[10px] font-mono tracking-widest uppercase font-bold text-zinc-450 text-zinc-400">Fresh Pork</span>
+      </div>
+    </section>
+
+    <!-- SECTION 1 — HOW IT WORKS -->
+    <section class="mt-8 mb-16 select-none border-b border-zinc-900/60 pb-16">
+      <div class="text-center max-w-2xl mx-auto mb-12 animate-fade-in">
+        <span class="text-[10px] tracking-[0.3em] font-mono font-black text-[#f3ba0b] uppercase bg-[#f3ba0b]/10 border border-[#f3ba0b]/20 px-3.5 py-1.5 rounded-full select-none">
+          SIMPLE PROCESS
+        </span>
+        <h2 class="font-display text-3xl sm:text-4xl md:text-5xl font-black text-white uppercase mt-4 mb-3 tracking-tight leading-none">
+          HOW IT WORKS
+        </h2>
+        <p class="text-xs sm:text-sm text-zinc-400 font-sans max-w-lg mx-auto leading-relaxed">
+          Ordering your favorite pork meal takes less than a minute.
+        </p>
+      </div>
+
+      <!-- Process Cards (Vertical on mobile, horizontal with connected line on desktop) -->
+      <div class="relative grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-8">
+        <!-- Connecting Line Background for Large Screen -->
+        <div class="hidden md:block absolute top-[45px] left-10 right-10 h-[1.5px] bg-gradient-to-r from-zinc-800 via-[#f3ba0b]/20 to-zinc-800 z-0 pointer-events-none"></div>
+
+        <!-- Step 1 -->
+        <div class="relative bg-brand-card hover:bg-zinc-900 border border-zinc-900 hover:border-zinc-800/80 p-6 rounded-2xl flex flex-col items-center text-center group transition-all duration-300 hover:translate-y-[-6px] focus:outline-none z-10 shadow-lg">
+          <div class="w-12 h-12 rounded-full bg-black border border-zinc-800 flex items-center justify-center text-[#f3ba0b] font-mono text-sm font-black mb-5 group-hover:bg-[#f3ba0b] group-hover:text-black group-hover:border-[#f3ba0b] transition-all duration-300 shadow-inner">
+            01
+          </div>
+          <h4 class="font-display text-base font-black text-white uppercase tracking-wide mb-2">Browse Menu</h4>
+          <p class="text-xs text-zinc-400 font-sans leading-relaxed">Explore pork meals, combos and sides.</p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="relative bg-brand-card hover:bg-zinc-900 border border-zinc-900 hover:border-zinc-800/80 p-6 rounded-2xl flex flex-col items-center text-center group transition-all duration-300 hover:translate-y-[-6px] focus:outline-none z-10 shadow-lg">
+          <div class="w-12 h-12 rounded-full bg-black border border-zinc-800 flex items-center justify-center text-[#f3ba0b] font-mono text-sm font-black mb-5 group-hover:bg-[#f3ba0b] group-hover:text-black group-hover:border-[#f3ba0b] transition-all duration-300 shadow-inner">
+            02
+          </div>
+          <h4 class="font-display text-base font-black text-white uppercase tracking-wide mb-2">Add To Cart</h4>
+          <p class="text-xs text-zinc-400 font-sans leading-relaxed">Select your meals and customize your order.</p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="relative bg-brand-card hover:bg-zinc-900 border border-zinc-900 hover:border-zinc-800/80 p-6 rounded-2xl flex flex-col items-center text-center group transition-all duration-300 hover:translate-y-[-6px] focus:outline-none z-10 shadow-lg">
+          <div class="w-12 h-12 rounded-full bg-black border border-zinc-800 flex items-center justify-center text-[#f3ba0b] font-mono text-sm font-black mb-5 group-hover:bg-[#f3ba0b] group-hover:text-black group-hover:border-[#f3ba0b] transition-all duration-300 shadow-inner">
+            03
+          </div>
+          <h4 class="font-display text-base font-black text-white uppercase tracking-wide mb-2">Checkout</h4>
+          <p class="text-xs text-zinc-400 font-sans leading-relaxed">Enter delivery details and confirm payment.</p>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="relative bg-brand-card hover:bg-zinc-900 border border-zinc-900 hover:border-zinc-800/80 p-6 rounded-2xl flex flex-col items-center text-center group transition-all duration-300 hover:translate-y-[-6px] focus:outline-none z-10 shadow-lg">
+          <div class="w-12 h-12 rounded-full bg-black border border-zinc-800 flex items-center justify-center text-[#f3ba0b] font-mono text-sm font-black mb-5 group-hover:bg-[#f3ba0b] group-hover:text-black group-hover:border-[#f3ba0b] transition-all duration-300 shadow-inner">
+            04
+          </div>
+          <h4 class="font-display text-base font-black text-white uppercase tracking-wide mb-2">Enjoy</h4>
+          <p class="text-xs text-zinc-400 font-sans leading-relaxed">Receive your freshly prepared pork at your location.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2 — COMBO DEALS & BUNDLES -->
+    <section id="combo-deals-section" class="mb-16 select-none border-b border-zinc-900/60 pb-16">
+      <div class="text-center max-w-2xl mx-auto mb-12 animate-fade-in">
+        <span class="text-[10px] tracking-[0.3em] font-mono font-black text-emerald-400 uppercase bg-emerald-500/10 border border-emerald-500/20 px-3.5 py-1.5 rounded-full select-none">
+          VALUE PACKS
+        </span>
+        <h2 class="font-display text-3xl sm:text-4xl md:text-5xl font-black text-white uppercase mt-4 mb-3 tracking-tight leading-none">
+          COMBO DEALS & BUNDLES
+        </h2>
+        <p class="text-xs sm:text-sm text-zinc-400 font-sans max-w-lg mx-auto leading-relaxed">
+          Get more value with our best-selling meal combinations.
+        </p>
+      </div>
+
+      <!-- Combo Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6">
+        <!-- Combo 1 -->
+        <div class="group bg-zinc-950/85 border border-zinc-900/80 hover:border-zinc-800 rounded-2xl overflow-hidden shadow-2xl transition-all duration-300 hover:translate-y-[-6px] flex flex-col justify-between h-full hover:shadow-[0_15px_30px_rgba(243,186,11,0.07)]">
+          <div class="relative h-28 sm:h-32 w-full overflow-hidden bg-zinc-900 shrink-0">
+            <!-- Badge overlay -->
+            <span class="absolute top-3 left-3 z-20 bg-emerald-500 text-black text-[9px] font-black font-display px-2.5 py-0.5 rounded-full tracking-wider uppercase shadow-md animate-pulse">
+              SAVE GH₵8
+            </span>
+            <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=600&auto=format&fit=crop&q=80" alt="The Solo King" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" referrerpolicy="no-referrer">
+            <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-transparent"></div>
+          </div>
+          <div class="p-4 sm:p-5 flex-1 flex flex-col justify-between">
+            <div>
+              <span class="text-[9px] font-mono font-bold text-zinc-500 uppercase tracking-widest block mb-1">COMBO 1</span>
+              <h3 class="font-display text-lg sm:text-lg font-black text-white uppercase mb-2 group-hover:text-[#f3ba0b] transition-colors leading-none">
+                The Solo King
+              </h3>
+              
+              <div class="border-t border-zinc-900/60 pt-3 mb-3.5">
+                <span class="text-[9px] font-mono text-zinc-500 uppercase tracking-wider block mb-1.5 font-black">Includes:</span>
+                <ul class="space-y-1 text-zinc-300 text-sm font-bold font-sans">
+                  <li class="flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                    <span>1x Grilled Pork</span>
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                    <span>1x Jollof Rice</span>
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                    <span>1x Soft Drink</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex items-baseline justify-between border-t border-zinc-900/60 pt-3 mb-3">
+                <span class="text-[9px] font-mono text-zinc-500 uppercase tracking-wider">Combo Price</span>
+                <span class="text-[#f3ba0b] font-display font-black text-xl sm:text-2xl">GH₵45</span>
+              </div>
+              <button 
+                onclick="addToCart('cb-01')" 
+                type="button" 
+                class="w-full py-2.5 bg-[#A31D1D] hover:bg-[#C82525] text-white text-[11px] font-black uppercase tracking-widest rounded-lg transition-all duration-300 hover:scale-[1.01] active:scale-98 shadow-md hover:shadow-brand-red/10 cursor-pointer focus:outline-none flex items-center justify-center gap-2"
+              >
+                Add Combo
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Combo 2 -->
+        <div class="group bg-zinc-950/85 border border-zinc-900/80 hover:border-zinc-800 rounded-2xl overflow-hidden shadow-2xl transition-all duration-300 hover:translate-y-[-6px] flex flex-col justify-between h-full hover:shadow-[0_15px_30px_rgba(243,186,11,0.07)]">
+          <div class="relative h-28 sm:h-32 w-full overflow-hidden bg-zinc-900 shrink-0">
+            <!-- Badge overlay -->
+            <span class="absolute top-3 left-3 z-20 bg-emerald-500 text-black text-[9px] font-black font-display px-2.5 py-0.5 rounded-full tracking-wider uppercase shadow-md animate-pulse">
+              SAVE GH₵25
+            </span>
+            <img src="/src/assets/images/family_feast_platter_1780630597565.png" alt="Family Feast" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" referrerpolicy="no-referrer">
+            <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-transparent"></div>
+          </div>
+          <div class="p-4 sm:p-5 flex-1 flex flex-col justify-between">
+            <div>
+              <span class="text-[9px] font-mono font-bold text-zinc-500 uppercase tracking-widest block mb-1">COMBO 2</span>
+              <h3 class="font-display text-lg sm:text-lg font-black text-white uppercase mb-2 group-hover:text-[#f3ba0b] transition-colors leading-none">
+                Family Feast
+              </h3>
+              
+              <div class="border-t border-zinc-900/60 pt-3 mb-3.5">
+                <span class="text-[9px] font-mono text-zinc-500 uppercase tracking-wider block mb-1.5 font-black">Includes:</span>
+                <ul class="space-y-1 text-zinc-300 text-sm font-bold font-sans">
+                  <li class="flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                    <span>3x Grilled Pork</span>
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                    <span>2x Noodles</span>
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                    <span>2x Sides</span>
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                    <span>1.5L Drink</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex items-baseline justify-between border-t border-zinc-900/60 pt-3 mb-3">
+                <span class="text-[9px] font-mono text-zinc-500 uppercase tracking-wider">Combo Price</span>
+                <span class="text-[#f3ba0b] font-display font-black text-xl sm:text-2xl">GH₵120</span>
+              </div>
+              <button 
+                onclick="addToCart('cb-02')" 
+                type="button" 
+                class="w-full py-2.5 bg-[#A31D1D] hover:bg-[#C82525] text-white text-[11px] font-black uppercase tracking-widest rounded-lg transition-all duration-300 hover:scale-[1.01] active:scale-98 shadow-md hover:shadow-brand-red/10 cursor-pointer focus:outline-none flex items-center justify-center gap-2"
+              >
+                Add Combo
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Combo 3 -->
+        <div class="group bg-zinc-950/85 border border-zinc-900/80 hover:border-zinc-800 rounded-2xl overflow-hidden shadow-2xl transition-all duration-300 hover:translate-y-[-6px] flex flex-col justify-between h-full hover:shadow-[0_15px_30px_rgba(243,186,11,0.07)]">
+          <div class="relative h-28 sm:h-32 w-full overflow-hidden bg-zinc-900 shrink-0">
+            <!-- Badge overlay -->
+            <span class="absolute top-3 left-3 z-20 bg-emerald-500 text-black text-[9px] font-black font-display px-2.5 py-0.5 rounded-full tracking-wider uppercase shadow-md animate-pulse">
+              SAVE GH₵12
+            </span>
+            <img src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=600&auto=format&fit=crop&q=80" alt="Pork Lover Duo" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" referrerpolicy="no-referrer">
+            <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-transparent"></div>
+          </div>
+          <div class="p-4 sm:p-5 flex-1 flex flex-col justify-between">
+            <div>
+              <span class="text-[9px] font-mono font-bold text-zinc-500 uppercase tracking-widest block mb-1">COMBO 3</span>
+              <h3 class="font-display text-lg sm:text-lg font-black text-white uppercase mb-2 group-hover:text-[#f3ba0b] transition-colors leading-none">
+                Pork Lover Duo
+              </h3>
+              
+              <div class="border-t border-zinc-900/60 pt-3 mb-3.5">
+                <span class="text-[9px] font-mono text-zinc-500 uppercase tracking-wider block mb-1.5 font-black">Includes:</span>
+                <ul class="space-y-1 text-zinc-300 text-sm font-bold font-sans">
+                  <li class="flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                    <span>2x Signature Pork</span>
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                    <span>2x Yam Chips</span>
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                    <span>Extra Sauce</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex items-baseline justify-between border-t border-zinc-900/60 pt-3 mb-3">
+                <span class="text-[9px] font-mono text-zinc-500 uppercase tracking-wider">Combo Price</span>
+                <span class="text-[#f3ba0b] font-display font-black text-xl sm:text-2xl">GH₵68</span>
+              </div>
+              <button 
+                onclick="addToCart('cb-03')" 
+                type="button" 
+                class="w-full py-2.5 bg-[#A31D1D] hover:bg-[#C82525] text-white text-[11px] font-black uppercase tracking-widest rounded-lg transition-all duration-300 hover:scale-[1.01] active:scale-98 shadow-md hover:shadow-brand-red/10 cursor-pointer focus:outline-none flex items-center justify-center gap-2"
+              >
+                Add Combo
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3 — MOST ORDERED TODAY -->
+    <section class="mb-16 select-none border-b border-zinc-900/60 pb-16">
+      <div class="text-center max-w-2xl mx-auto mb-12 animate-fade-in">
+        <span class="text-[10px] tracking-[0.3em] font-mono font-black text-[#f3ba0b] uppercase bg-[#f3ba0b]/10 border border-[#f3ba0b]/20 px-3.5 py-1.5 rounded-full select-none">
+          DAILY TRENDS
+        </span>
+        <h2 class="font-display text-3xl sm:text-4xl md:text-5xl font-black text-white uppercase mt-4 mb-3 tracking-tight leading-none">
+          MOST ORDERED TODAY
+        </h2>
+        <p class="text-xs sm:text-sm text-zinc-400 font-sans max-w-lg mx-auto leading-relaxed">
+          The meals our customers can't stop ordering.
+        </p>
+      </div>
+
+      <!-- Grid Column for 4 products -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Item 1 -->
+        <div class="group bg-brand-card border border-zinc-900 hover:border-zinc-800 rounded-xl overflow-hidden flex flex-col justify-between transition-all duration-300 hover:translate-y-[-5px] shadow-lg relative">
+          <div class="relative aspect-square w-full overflow-hidden bg-zinc-900 shrink-0">
+            <span class="absolute top-3 left-3 z-20 bg-[#f3ba0b] text-black text-[9px] font-black font-mono px-2 py-0.5 rounded shadow-sm tracking-wider uppercase select-none">
+              ★ BEST SELLER
+            </span>
+            <img src="https://images.unsplash.com/photo-1606755962773-d324e0a13086?w=600&auto=format&fit=crop&q=80" alt="Signature Fried Pork" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" referrerpolicy="no-referrer">
+            <div class="absolute inset-0 bg-gradient-to-t from-brand-card/95 via-transparent to-transparent"></div>
+          </div>
+          <div class="p-5 flex-1 flex flex-col justify-between">
+            <div class="mb-4">
+              <h4 class="font-display text-sm font-black text-white uppercase tracking-wide group-hover:text-[#f3ba0b] transition-colors leading-tight">
+                Signature Fried Pork
+              </h4>
+              <p class="text-[11px] text-zinc-400 font-sans mt-1.5 leading-relaxed">
+                Our legendary recipe golden-crispy fried seasoned pork chunks.
+              </p>
+            </div>
+            <div>
+              <div class="flex items-baseline justify-between border-t border-zinc-900/60 pt-3 mb-3">
+                <span class="text-[9px] font-mono text-zinc-500 uppercase tracking-wider">Price</span>
+                <span class="text-[#f3ba0b] font-display font-black text-base sm:text-lg">GH₵35</span>
+              </div>
+              <button 
+                onclick="addToCart('mo-01')" 
+                type="button" 
+                class="w-full py-2.5 bg-[#A31D1D] border border-[#A31D1D] text-white hover:bg-[#C82525] hover:border-[#C82525] text-[11px] font-black uppercase tracking-widest rounded-md transition-all duration-300 cursor-pointer focus:outline-none flex items-center justify-center gap-1.5 shadow-md shadow-brand-red/10"
+              >
+                Quick Add
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="group bg-brand-card border border-zinc-900 hover:border-zinc-800 rounded-xl overflow-hidden flex flex-col justify-between transition-all duration-300 hover:translate-y-[-5px] shadow-lg relative">
+          <div class="relative aspect-square w-full overflow-hidden bg-zinc-900 shrink-0">
+            <span class="absolute top-3 left-3 z-20 bg-[#f3ba0b] text-black text-[9px] font-black font-mono px-2 py-0.5 rounded shadow-sm tracking-wider uppercase select-none">
+              ★ BEST SELLER
+            </span>
+            <img src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=600&auto=format&fit=crop&q=80" alt="Pork & Yam Chips" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" referrerpolicy="no-referrer">
+            <div class="absolute inset-0 bg-gradient-to-t from-brand-card/95 via-transparent to-transparent"></div>
+          </div>
+          <div class="p-5 flex-1 flex flex-col justify-between">
+            <div class="mb-4">
+              <h4 class="font-display text-sm font-black text-white uppercase tracking-wide group-hover:text-[#f3ba0b] transition-colors leading-tight">
+                Pork & Yam Chips
+              </h4>
+              <p class="text-[11px] text-zinc-400 font-sans mt-1.5 leading-relaxed">
+                Wood-grilled crispy pork cuts coupled with traditional golden fried yam chips.
+              </p>
+            </div>
+            <div>
+              <div class="flex items-baseline justify-between border-t border-zinc-900/60 pt-3 mb-3">
+                <span class="text-[9px] font-mono text-zinc-500 uppercase tracking-wider">Price</span>
+                <span class="text-[#f3ba0b] font-display font-black text-base sm:text-lg">GH₵40</span>
+              </div>
+              <button 
+                onclick="addToCart('mo-02')" 
+                type="button" 
+                class="w-full py-2.5 bg-[#A31D1D] border border-[#A31D1D] text-white hover:bg-[#C82525] hover:border-[#C82525] text-[11px] font-black uppercase tracking-widest rounded-md transition-all duration-300 cursor-pointer focus:outline-none flex items-center justify-center gap-1.5 shadow-md shadow-brand-red/10"
+              >
+                Quick Add
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="group bg-brand-card border border-zinc-900 hover:border-zinc-800 rounded-xl overflow-hidden flex flex-col justify-between transition-all duration-300 hover:translate-y-[-5px] shadow-lg relative">
+          <div class="relative aspect-square w-full overflow-hidden bg-zinc-900 shrink-0">
+            <span class="absolute top-3 left-3 z-20 bg-[#f3ba0b] text-black text-[9px] font-black font-mono px-2 py-0.5 rounded shadow-sm tracking-wider uppercase select-none">
+              ★ BEST SELLER
+            </span>
+            <img src="https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?w=600&auto=format&fit=crop&q=80" alt="Pork & Jollof" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" referrerpolicy="no-referrer">
+            <div class="absolute inset-0 bg-gradient-to-t from-brand-card/95 via-transparent to-transparent"></div>
+          </div>
+          <div class="p-5 flex-1 flex flex-col justify-between">
+            <div class="mb-4">
+              <h4 class="font-display text-sm font-black text-white uppercase tracking-wide group-hover:text-[#f3ba0b] transition-colors leading-tight">
+                Pork & Jollof
+              </h4>
+              <p class="text-[11px] text-zinc-400 font-sans mt-1.5 leading-relaxed">
+                Tender roasted pork chunks layered over a classic spicy Ghanaian Jollof rice stack.
+              </p>
+            </div>
+            <div>
+              <div class="flex items-baseline justify-between border-t border-zinc-900/60 pt-3 mb-3">
+                <span class="text-[9px] font-mono text-zinc-500 uppercase tracking-wider">Price</span>
+                <span class="text-[#f3ba0b] font-display font-black text-base sm:text-lg">GH₵45</span>
+              </div>
+              <button 
+                onclick="addToCart('mo-03')" 
+                type="button" 
+                class="w-full py-2.5 bg-[#A31D1D] border border-[#A31D1D] text-white hover:bg-[#C82525] hover:border-[#C82525] text-[11px] font-black uppercase tracking-widest rounded-md transition-all duration-300 cursor-pointer focus:outline-none flex items-center justify-center gap-1.5 shadow-md shadow-brand-red/10"
+              >
+                Quick Add
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="group bg-brand-card border border-zinc-900 hover:border-zinc-800 rounded-xl overflow-hidden flex flex-col justify-between transition-all duration-300 hover:translate-y-[-5px] shadow-lg relative">
+          <div class="relative aspect-square w-full overflow-hidden bg-zinc-900 shrink-0">
+            <span class="absolute top-3 left-3 z-20 bg-[#f3ba0b] text-black text-[9px] font-black font-mono px-2 py-0.5 rounded shadow-sm tracking-wider uppercase select-none">
+              ★ BEST SELLER
+            </span>
+            <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=600&auto=format&fit=crop&q=80" alt="Family Pork Platter" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" referrerpolicy="no-referrer">
+            <div class="absolute inset-0 bg-gradient-to-t from-brand-card/95 via-transparent to-transparent"></div>
+          </div>
+          <div class="p-5 flex-1 flex flex-col justify-between">
+            <div class="mb-4">
+              <h4 class="font-display text-sm font-black text-white uppercase tracking-wide group-hover:text-[#f3ba0b] transition-colors leading-tight">
+                Family Pork Platter
+              </h4>
+              <p class="text-[11px] text-zinc-400 font-sans mt-1.5 leading-relaxed">
+                Enormous platter loaded with family pork portions, yam chips, shito, and dips.
+              </p>
+            </div>
+            <div>
+              <div class="flex items-baseline justify-between border-t border-zinc-900/60 pt-3 mb-3">
+                <span class="text-[9px] font-mono text-zinc-500 uppercase tracking-wider">Price</span>
+                <span class="text-[#f3ba0b] font-display font-black text-base sm:text-lg">GH₵95</span>
+              </div>
+              <button 
+                onclick="addToCart('mo-04')" 
+                type="button" 
+                class="w-full py-2.5 bg-[#A31D1D] border border-[#A31D1D] text-white hover:bg-[#C82525] hover:border-[#C82525] text-[11px] font-black uppercase tracking-widest rounded-md transition-all duration-300 cursor-pointer focus:outline-none flex items-center justify-center gap-1.5 shadow-md shadow-brand-red/10"
+              >
+                Quick Add
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTENT LAYOUT GRID -->
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+      
+      <!-- LEFT SIDEBAR: Search & Filters UI Panel (lg:sticky lg:top-24 h-fit for scroll locking) -->
+      <aside class="lg:col-span-1 lg:sticky lg:top-24 h-fit flex flex-col gap-6">
+        
+        <!-- Search Input Box Card (High fidelity mockup match) -->
+        <div class="bg-brand-card/85 p-5 rounded-lg border border-zinc-800/60 shadow-sm flex flex-col gap-3">
+          <label for="search-input" class="font-display text-xs font-bold uppercase tracking-wider text-white">
+            SEARCH MENU
+          </label>
+          
+          <div class="relative w-full">
+            <input 
+              type="text" 
+              id="search-input" 
+              placeholder="Search pork meals..." 
+              class="w-full px-3.5 py-2.5 bg-zinc-900 border border-zinc-800 text-sm text-zinc-100 placeholder-zinc-500 rounded focus:outline-none focus:border-brand-red focus:ring-1 focus:ring-brand-red transition-all duration-205"
+              autocomplete="off"
+              spellcheck="false"
+            >
+          </div>
+
+          <!-- Permanent clear button styled exactly like the screenshot -->
+          <button 
+            id="search-btn-clear" 
+            type="button" 
+            class="w-full py-2 bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 text-xs text-zinc-350 hover:text-white rounded uppercase font-bold tracking-widest transition-all duration-200 cursor-pointer focus:outline-none"
+          >
+            Clear
+          </button>
+        </div>
+
+        <!-- Categories Filter Container Card (High fidelity mockup match) -->
+        <div class="bg-brand-card/85 p-5 rounded-lg border border-zinc-800/60 shadow-sm flex flex-col gap-4">
+          <div class="flex items-center justify-between">
+            <span class="font-display text-xs font-bold uppercase tracking-wider text-white">
+              CATEGORIES
+            </span>
+          </div>
+          
+          <!-- This will be loaded dynamically by javascript code -->
+          <nav id="category-list" class="flex flex-col gap-1 w-full" aria-label="Menu categories">
+            <!-- Loading placeholder markup -->
+            <div class="h-10 bg-zinc-800/40 rounded animate-pulse w-full"></div>
+            <div class="h-10 bg-zinc-800/40 rounded animate-pulse w-full mt-1"></div>
+            <div class="h-10 bg-zinc-800/40 rounded animate-pulse w-full mt-1"></div>
+          </nav>
+        </div>
+
+        <!-- Quality Guarantee Badge (Modern, Shopify Shop Style) -->
+        <div class="p-4 rounded-lg bg-zinc-950/40 border border-zinc-900/60 hidden lg:flex flex-col gap-2.5">
+          <div class="flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+            </svg>
+            <span class="text-xs uppercase font-mono tracking-wider font-semibold text-zinc-350">Accra Culinary Standards</span>
+          </div>
+          <p class="text-[11px] leading-relaxed text-zinc-500">
+            Fresh meat cuts daily from certified premium partners. Marinated with signature street seasonings and cooked fresh under sanitary guidelines.
+          </p>
+        </div>
+
+      </aside>
+
+      <!-- RIGHT MAIN AREA: Dynamic Product Grid List -->
+      <section class="lg:col-span-3 flex flex-col gap-6" aria-label="Menu list">
+        
+        <!-- Filter Header Bar (High fidelity screenshot match with Grid/List toggles) -->
+        <div class="flex items-center justify-between border-b border-zinc-900 pb-5">
+          <h2 class="font-display text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight leading-none uppercase select-none">
+            Build your order
+          </h2>
+          <div class="flex items-center gap-4">
+            
+            <!-- Grid & List View Toggle Button Controls -->
+            <div class="flex items-center bg-black/60 rounded border border-zinc-800 p-0.5 select-none shrink-0" role="group" aria-label="Layout view mode">
+              <button 
+                id="view-btn-grid" 
+                type="button" 
+                class="p-1.5 rounded transition-all cursor-pointer focus:outline-none text-[#f3ba0b] bg-zinc-900 border border-zinc-800/80"
+                title="Grid View Layout"
+              >
+                <!-- Grid outline icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+                </svg>
+              </button>
+              
+              <button 
+                id="view-btn-list" 
+                type="button" 
+                class="p-1.5 rounded transition-all cursor-pointer focus:outline-none text-zinc-500 hover:text-zinc-200"
+                title="List View Layout"
+              >
+                <!-- List icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              </button>
+            </div>
+
+            <span class="hidden sm:inline text-zinc-800">|</span>
+
+            <span id="header-category-badge" class="text-[10px] sm:text-[11px] font-black uppercase bg-[#f3ba0b] text-black px-2.5 py-1 rounded tracking-wide select-none">
+              All Items
+            </span>
+          </div>
+        </div>
+
+        <!-- Grid Container dynamically managed by script.js -->
+        <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 transition-all duration-300">
+          <!-- Loading skeleton cards -->
+          <div class="bg-brand-card rounded-lg border border-zinc-800/80 aspect-square animate-pulse"></div>
+          <div class="bg-brand-card rounded-lg border border-zinc-800/80 aspect-square animate-pulse"></div>
+          <div class="bg-brand-card rounded-lg border border-zinc-800/80 aspect-square animate-pulse"></div>
+        </div>
+
+      </section>
+
+    </div>
+
+    <!-- SECTION 5 — EXTRA FIXINGS -->
+    <section class="mt-16 mb-16 select-none border-t border-zinc-900 pt-16">
+      <div class="text-center max-w-2xl mx-auto mb-10 animate-fade-in">
+        <span class="text-[10px] tracking-[0.3em] font-mono font-black text-amber-500 uppercase bg-amber-500/10 border border-amber-500/20 px-3.5 py-1.5 rounded-full select-none">
+          ADDITIONAL SIDES
+        </span>
+        <h2 class="font-display text-3xl sm:text-4xl font-black text-white uppercase mt-4 mb-3 tracking-tight leading-none">
+          EXTRA FIXINGS
+        </h2>
+        <p class="text-xs text-zinc-400 font-sans max-w-sm mx-auto leading-relaxed">
+          Upgrade your order with extra house special sides and sauces.
+        </p>
+      </div>
+
+      <!-- Compact Items Grid -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+        <!-- Item 1: Extra Shito -->
+        <div class="group bg-brand-card hover:bg-zinc-900 border border-zinc-900/80 hover:border-zinc-800 p-4 rounded-xl flex items-center justify-between gap-3 transition-all duration-300 hover:scale-[1.01]">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-lg overflow-hidden bg-zinc-900 shrink-0 select-none">
+              <img src="https://images.unsplash.com/photo-1471193945509-9ad0617afabf?w=100&auto=format&fit=crop&q=80" alt="Extra Shito" class="w-full h-full object-cover" referrerpolicy="no-referrer">
+            </div>
+            <div class="min-w-0">
+              <h4 class="font-display font-black text-[11px] sm:text-xs text-zinc-200 uppercase truncate">Extra Shito</h4>
+              <span class="text-[10px] sm:text-[11px] font-mono text-[#f3ba0b] font-bold block mt-0.5">GH₵5</span>
+            </div>
+          </div>
+          <button 
+            onclick="addToCart('ef-01')" 
+            type="button" 
+            class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#A31D1D] hover:bg-[#C82525] text-white flex items-center justify-center transition-all duration-200 cursor-pointer shadow-md focus:outline-none shrink-0"
+            title="Add Extra Shito"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 sm:h-4 sm:w-4 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+            </svg>
+          </button>
+        </div>
+
+        <!-- Item 2: Plantain (4pcs) -->
+        <div class="group bg-brand-card hover:bg-zinc-900 border border-zinc-900/80 hover:border-zinc-800 p-4 rounded-xl flex items-center justify-between gap-3 transition-all duration-300 hover:scale-[1.01]">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-lg overflow-hidden bg-zinc-900 shrink-0 select-none">
+              <img src="https://images.unsplash.com/photo-1564844536311-de546a28c87d?w=100&auto=format&fit=crop&q=80" alt="Plantain (4pcs)" class="w-full h-full object-cover" referrerpolicy="no-referrer">
+            </div>
+            <div class="min-w-0">
+              <h4 class="font-display font-black text-[11px] sm:text-xs text-zinc-200 uppercase truncate">Plantain (4pcs)</h4>
+              <span class="text-[10px] sm:text-[11px] font-mono text-[#f3ba0b] font-bold block mt-0.5">GH₵7</span>
+            </div>
+          </div>
+          <button 
+            onclick="addToCart('ef-02')" 
+            type="button" 
+            class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#A31D1D] hover:bg-[#C82525] text-white flex items-center justify-center transition-all duration-200 cursor-pointer shadow-md focus:outline-none shrink-0"
+            title="Add Plantain"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 sm:h-4 sm:w-4 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+            </svg>
+          </button>
+        </div>
+
+        <!-- Item 3: Fried Yam -->
+        <div class="group bg-brand-card hover:bg-zinc-900 border border-zinc-900/80 hover:border-zinc-800 p-4 rounded-xl flex items-center justify-between gap-3 transition-all duration-300 hover:scale-[1.01]">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-lg overflow-hidden bg-zinc-900 shrink-0 select-none">
+              <img src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=100&auto=format&fit=crop&q=80" alt="Fried Yam" class="w-full h-full object-cover" referrerpolicy="no-referrer">
+            </div>
+            <div class="min-w-0">
+              <h4 class="font-display font-black text-[11px] sm:text-xs text-zinc-200 uppercase truncate">Fried Yam</h4>
+              <span class="text-[10px] sm:text-[11px] font-mono text-[#f3ba0b] font-bold block mt-0.5">GH₵9</span>
+            </div>
+          </div>
+          <button 
+            onclick="addToCart('ef-03')" 
+            type="button" 
+            class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#A31D1D] hover:bg-[#C82525] text-white flex items-center justify-center transition-all duration-200 cursor-pointer shadow-md focus:outline-none shrink-0"
+            title="Add Fried Yam"
+          >
+            <svg xmlns="http://www.w3.org/2005/svg" class="h-3.5 sm:h-4 sm:w-4 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+            </svg>
+          </button>
+        </div>
+
+        <!-- Item 4: Extra Pork Portion -->
+        <div class="group bg-brand-card hover:bg-zinc-900 border border-zinc-900/80 hover:border-zinc-800 p-4 rounded-xl flex items-center justify-between gap-3 transition-all duration-300 hover:scale-[1.01]">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-lg overflow-hidden bg-zinc-900 shrink-0 select-none">
+              <img src="https://images.unsplash.com/photo-1606755962773-d324e0a13086?w=100&auto=format&fit=crop&q=80" alt="Extra Pork Portion" class="w-full h-full object-cover" referrerpolicy="no-referrer">
+            </div>
+            <div class="min-w-0">
+              <h4 class="font-display font-black text-[11px] sm:text-xs text-zinc-200 uppercase truncate">Extra Pork</h4>
+              <span class="text-[10px] sm:text-[11px] font-mono text-[#f3ba0b] font-bold block mt-0.5">GH₵11</span>
+            </div>
+          </div>
+          <button 
+            onclick="addToCart('ef-04')" 
+            type="button" 
+            class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#A31D1D] hover:bg-[#C82525] text-white flex items-center justify-center transition-all duration-200 cursor-pointer shadow-md focus:outline-none shrink-0"
+            title="Add Extra Pork"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 sm:h-4 sm:w-4 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+            </svg>
+          </button>
+        </div>
+
+        <!-- Item 5: Coca Cola -->
+        <div class="group bg-brand-card hover:bg-zinc-900 border border-zinc-900/80 hover:border-zinc-800 p-4 rounded-xl flex items-center justify-between gap-3 transition-all duration-300 hover:scale-[1.01]">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-lg overflow-hidden bg-zinc-900 shrink-0 select-none">
+              <img src="https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=100&auto=format&fit=crop&q=80" alt="Coca Cola" class="w-full h-full object-cover" referrerpolicy="no-referrer">
+            </div>
+            <div class="min-w-0">
+              <h4 class="font-display font-black text-[11px] sm:text-xs text-zinc-200 uppercase truncate">Coca Cola</h4>
+              <span class="text-[10px] sm:text-[11px] font-mono text-[#f3ba0b] font-bold block mt-0.5">GH₵13</span>
+            </div>
+          </div>
+          <button 
+            onclick="addToCart('ef-05')" 
+            type="button" 
+            class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#A31D1D] hover:bg-[#C82525] text-white flex items-center justify-center transition-all duration-200 cursor-pointer shadow-md focus:outline-none shrink-0"
+            title="Add Coca Cola"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 sm:h-4 sm:w-4 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+            </svg>
+          </button>
+        </div>
+
+        <!-- Item 6: House Sauce -->
+        <div class="group bg-brand-card hover:bg-zinc-905 bg-brand-card hover:bg-zinc-900 border border-zinc-900/80 hover:border-zinc-800 p-4 rounded-xl flex items-center justify-between gap-3 transition-all duration-300 hover:scale-[1.01]">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-lg overflow-hidden bg-zinc-900 shrink-0 select-none">
+              <img src="https://images.unsplash.com/photo-1471193945509-9ad0617afabf?w=100&auto=format&fit=crop&q=80" alt="House Sauce" class="w-full h-full object-cover" referrerpolicy="no-referrer">
+            </div>
+            <div class="min-w-0">
+              <h4 class="font-display font-black text-[11px] sm:text-xs text-zinc-200 uppercase truncate">House Sauce</h4>
+              <span class="text-[10px] sm:text-[11px] font-mono text-[#f3ba0b] font-bold block mt-0.5">GH₵15</span>
+            </div>
+          </div>
+          <button 
+            onclick="addToCart('ef-06')" 
+            type="button" 
+            class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#A31D1D] hover:bg-[#C82525] text-white flex items-center justify-center transition-all duration-200 cursor-pointer shadow-md focus:outline-none shrink-0"
+            title="Add House Sauce"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 sm:h-4 sm:w-4 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+            </svg>
+          </button>
+        </div>
+
+        <!-- Item 7: Bottled Water -->
+        <div class="group bg-brand-card hover:bg-zinc-900 border border-zinc-900/80 hover:border-zinc-800 p-4 rounded-xl flex items-center justify-between gap-3 transition-all duration-300 hover:scale-[1.01]">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-lg overflow-hidden bg-zinc-900 shrink-0 select-none">
+              <img src="https://images.unsplash.com/photo-1616118132534-381148898bb4?w=100&auto=format&fit=crop&q=80" alt="Bottled Water" class="w-full h-full object-cover" referrerpolicy="no-referrer">
+            </div>
+            <div class="min-w-0">
+              <h4 class="font-display font-black text-[11px] sm:text-xs text-zinc-200 uppercase truncate">Bottled Water</h4>
+              <span class="text-[10px] sm:text-[11px] font-mono text-[#f3ba0b] font-bold block mt-0.5">GH₵7</span>
+            </div>
+          </div>
+          <button 
+            onclick="addToCart('ef-07')" 
+            type="button" 
+            class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#A31D1D] hover:bg-[#C82525] text-white flex items-center justify-center transition-all duration-200 cursor-pointer shadow-md focus:outline-none shrink-0"
+            title="Add Bottled Water"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 sm:h-4 sm:w-4 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+            </svg>
+          </button>
+        </div>
+
+        <!-- Item 8: Side Salad -->
+        <div class="group bg-brand-card hover:bg-zinc-900 border border-zinc-900/80 hover:border-zinc-800 p-4 rounded-xl flex items-center justify-between gap-3 transition-all duration-300 hover:scale-[1.01]">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-lg overflow-hidden bg-zinc-900 shrink-0 select-none">
+              <img src="https://images.unsplash.com/photo-1625944525533-473f1a3d54e7?w=100&auto=format&fit=crop&q=80" alt="Side Salad" class="w-full h-full object-cover" referrerpolicy="no-referrer">
+            </div>
+            <div class="min-w-0">
+              <h4 class="font-display font-black text-[11px] sm:text-xs text-zinc-200 uppercase truncate">Side Salad</h4>
+              <span class="text-[10px] sm:text-[11px] font-mono text-[#f3ba0b] font-bold block mt-0.5">GH₵19</span>
+            </div>
+          </div>
+          <button 
+            onclick="addToCart('ef-08')" 
+            type="button" 
+            class="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#A31D1D] hover:bg-[#C82525] text-white flex items-center justify-center transition-all duration-200 cursor-pointer shadow-md focus:outline-none shrink-0"
+            title="Add Side Salad"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 sm:h-4 sm:w-4 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- LOCATION & INFRASTRUCTURE SECTION -->
+    <section id="location-section" class="mt-20 border-t border-zinc-900 pt-16">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+        
+        <!-- Location details -->
+        <div class="bg-brand-card/90 border border-zinc-900 p-6 sm:p-10 rounded-xl flex flex-col justify-between">
+          <div>
+            <span class="text-brand-red font-mono font-bold tracking-widest text-[10px] uppercase block mb-2">📍 VISIT THE OUTPOST</span>
+            <h3 class="font-display text-2xl sm:text-3xl font-black text-white mb-4">PARK N PORK AWOSHIE GRILL</h3>
+            <p class="text-zinc-400 text-xs sm:text-sm leading-relaxed mb-6 font-sans">
+              Park N Pork is located in the heart of Awoshie, close to the main residential and transport routes, making it easy for delivery dispatch across Awoshie, McCarthy Hill, Pokuase, Dansoman, Ablekuma, and Sowutuom. We deliver fresh pork meals across Awoshie and nearby areas in Accra within fast delivery time.
+            </p>
+            
+            <div class="space-y-4">
+              <div class="flex items-start gap-3">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-zinc-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                <div>
+                  <h5 class="text-xs font-mono font-bold uppercase text-zinc-200">Primary Location</h5>
+                  <p class="text-xs text-zinc-400 mt-0.5">Awoshie, Accra – Greater Accra Region, Ghana</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-zinc-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <div>
+                  <h5 class="text-xs font-mono font-bold uppercase text-zinc-200">Opening Hours</h5>
+                  <p class="text-xs text-zinc-400 mt-0.5">Monday – Sunday: 10:00 AM – 11:00 PM</p>
+                  <p class="text-[10px] text-brand-red font-semibold uppercase mt-1">Peak grill hours: 5:00 PM – 10:30 PM</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-zinc-500 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h2.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.24.965l-1.313 1.313a11.014 11.014 0 004.819 4.819l1.313-1.313a1 1 0 01.965-.24l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+                <div>
+                  <h5 class="text-xs font-mono font-bold uppercase text-zinc-200">Phone / Call / MoMo Orders</h5>
+                  <a href="tel:+233540001122" class="text-sm text-amber-500 font-mono font-black hover:underline hover:text-amber-400 transition-colors">+233 54 000 1122</a>
+                  <p class="text-[10px] text-zinc-500 mt-0.5">MoMo & ordering: Same number. WhatsApp support only.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-8 pt-6 border-t border-zinc-900 flex items-center gap-4">
+            <span class="inline-flex h-2 w-2 rounded-full bg-emerald-500"></span>
+            <span class="text-xs font-mono text-zinc-400 uppercase tracking-wider">Fast takeaway & fresh delivery available</span>
+          </div>
+        </div>
+
+        <!-- Embedded Map placeholder / Aesthetic imagery of East Legon style grill vibe -->
+        <div class="relative rounded-xl overflow-hidden min-h-[300px] border border-zinc-900 bg-zinc-950">
+          <img 
+            src="https://images.unsplash.com/photo-1518492104633-130d0cc84637?w=800&auto=format&fit=crop&q=80" 
+            alt="Park N Pork East Legon Outdoor street setup" 
+            class="w-full h-full object-cover object-center filter brightness-[0.5] contrast-[1.05]"
+            referrerpolicy="no-referrer"
+          >
+          <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+          <div class="absolute bottom-6 left-6 right-6">
+            <span class="text-[9px] font-mono font-extrabold uppercase text-amber-500 tracking-widest bg-amber-500/10 border border-amber-500/20 px-2 py-1 rounded">Grill Pit Status</span>
+            <h4 class="font-display font-bold text-lg text-white mt-2">Active Fires Under The Red Roof</h4>
+            <p class="text-zinc-400 text-xs mt-1">Pop down today to pick up freshly charred skewers and cold Sobolo brews.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CALL TO ACTION BANNER (Redesigned Accra street grill premium callout banner) -->
+    <section class="mt-20 relative rounded-2xl overflow-hidden p-8 sm:p-12 md:p-20 border border-zinc-900 shadow-2xl text-center group/cta select-none">
+      <!-- Background Food Image with rich dark overlay -->
+      <div class="absolute inset-0 z-0">
+        <img 
+          src="/src/assets/images/grill_flames_bg_1780628153747.png" 
+          alt="Sizzling Oak Fire Charcoal Grill" 
+          class="w-full h-full object-cover object-center filter brightness-[0.25] contrast-[1.1] transition-transform duration-700 group-hover/cta:scale-105"
+          referrerpolicy="no-referrer"
+        />
+        <!-- Secondary smooth radial dark gradient on top for perfect legibility -->
+        <div class="absolute inset-0 bg-gradient-to-t from-brand-charcoal via-brand-charcoal/85 to-transparent"></div>
+        <div class="absolute inset-0 bg-black/50"></div>
+      </div>
+      
+      <div class="relative z-10 max-w-2xl mx-auto flex flex-col items-center gap-6">
+        <span class="text-[10px] tracking-[0.3em] font-mono font-black text-[#f3ba0b] uppercase bg-[#f3ba0b]/10 border border-[#f3ba0b]/20 px-3.5 py-1.5 rounded-full select-none">
+          CRAVING THE SIZZLE?
+        </span>
+        <h2 class="font-display text-4xl sm:text-5xl md:text-6xl font-black text-white leading-[1.1] uppercase tracking-tight text-balance">
+          READY TO <span class="text-[#f3ba0b]">INDULGE</span>?
+        </h2>
+        <p class="text-xs sm:text-sm md:text-base text-zinc-300 leading-relaxed font-sans max-w-lg">
+          Skip the wait and satisfy your craving. Our grill is hot and ready for your order. Fast checkout via Mobile Money guaranteed.
+        </p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mt-4 w-full sm:w-auto">
+          <a 
+            href="#product-grid" 
+            class="w-full sm:w-auto px-8 py-4 bg-[#A31D1D] hover:bg-[#C82525] hover:scale-[1.03] active:scale-98 text-white text-xs sm:text-sm font-black uppercase tracking-widest rounded-lg transition-all duration-300 shadow-xl shadow-brand-red/25 hover:shadow-brand-red/35 focus:outline-none text-center"
+          >
+            Order My Meal Now
+          </a>
+          <a 
+            href="#combo-deals-section" 
+            class="w-full sm:w-auto px-8 py-4 bg-zinc-900/80 border border-zinc-800 hover:bg-zinc-800 hover:text-white hover:scale-[1.03] active:scale-98 text-zinc-350 text-xs sm:text-sm font-black uppercase tracking-widest rounded-lg transition-all duration-300 focus:outline-none text-center"
+          >
+            Check Today's Deals
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- BOTTOM FOOTER -->
+  <footer id="contact-footer" class="mt-28 border-t border-zinc-900 bg-black/40 pt-16 pb-12 text-zinc-400 text-xs select-none">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-16 text-left">
+        <!-- Col 1: Brand details -->
+        <div class="flex flex-col gap-4">
+          <h4 class="font-display font-black text-white text-base uppercase tracking-wider">PARK N <span class="text-[#A31D1D]">PORK</span></h4>
+          <p class="text-zinc-500 text-xs leading-relaxed max-w-xs">
+            Ghana's premier charcoal-grilled pork destination. Authentic flavor, smoky goodness, and the best shito in Accra. From the grill to your doorstep.
+          </p>
+          <!-- Social Icons Block -->
+          <div class="flex gap-3.5 mt-2">
+            <a href="#" class="w-8 h-8 rounded-full bg-zinc-900 hover:bg-[#A31D1D] text-zinc-400 hover:text-white flex items-center justify-center transition-all duration-200">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                <path d="M9 8H7v3h2v9h3v-9h3.7l.3-3h-4V7c0-.5.2-.7.8-.7h3.2V3H13c-2.3 0-4 1.3-4 3.7V8z"/>
+              </svg>
+            </a>
+            <a href="#" class="w-8 h-8 rounded-full bg-zinc-900 hover:bg-[#A31D1D] text-zinc-400 hover:text-white flex items-center justify-center transition-all duration-200">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                <path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.8.3 2.2.5.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .5 2.2.1 1.3.1 1.6.1 4.9s0 3.6-.1 4.9c-.1 1.2-.3 1.8-.5 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.5-1.3.1-1.6.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.8-.3-2.2-.5-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.5-2.2-.1-1.3-.1-1.6-.1-4.9s0-3.6.1-4.9c.1-1.2.3-1.8.5-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.5 1.3-.1 1.6-.1 4.9-.1zM12 0C8.7 0 8.3 0 7 .1c-1.3.1-2.2.3-3 .6-.8.3-1.5.7-2.1 1.3-.6.6-1 1.3-1.3 2.1-.3.8-.5 1.7-.6 3C0 8.3 0 8.7 0 12s0 3.7.1 5c.1 1.3.3 2.2.6 3 .3.8.7 1.5 1.3 2.1.6.6 1.3 1 2.1 1.3.8.3 1.7.5 3 .6 1.3.1 1.7.1 5 .1s3.7 0 5-.1c1.3-.1 2.2-.3 3-.6.8-.3 1.5-.7 2.1-1.3.6-.6 1-1.3 1.3-2.1.3-.8.5-1.7.6-3 .1-1.3.1-1.7.1-5s-.1-3.7-.1-5c-.1-1.3-.3-2.2-.6-3-.3-.8-.7-1.5-1.3-2.1-.6-.6-1.3-1-2.1-1.3-.8-.3-1.7-.5-3-.6C15.7 0 15.3 0 12 0zm0 5.8c-3.4 0-6.2 2.8-6.2 6.2s2.8 6.2 6.2 6.2 6.2-2.8 6.2-6.2-2.8-6.2-6.2-6.2zm0 10.2c-2.2 0-4-1.8-4-4s1.8-4 4-4 4 1.8 4 4-1.8 4-4 4zm6.4-11c0 .8-.6 1.4-1.4 1.4s-1.4-.6-1.4-1.4.6-1.4 1.4-1.4 1.4.6 1.4 1.4z"/>
+              </svg>
+            </a>
+            <a href="#" class="w-8 h-8 rounded-full bg-zinc-900 hover:bg-[#A31D1D] text-zinc-400 hover:text-white flex items-center justify-center transition-all duration-200">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Col 2: Quick links -->
+        <div class="flex flex-col gap-4">
+          <h5 class="font-mono text-zinc-200 text-xs uppercase tracking-widest font-black">QUICK LINKS</h5>
+          <ul class="space-y-2.5 text-zinc-550 text-zinc-500 font-sans">
+            <li><a href="./" class="hover:text-white transition-colors duration-200">Home</a></li>
+            <li><a href="./#product-grid" class="hover:text-white transition-colors duration-200">Full Menu</a></li>
+            <li><a href="./specials.html" class="hover:text-white transition-colors duration-200">Today's Specials</a></li>
+            <li><a href="./#location-section" class="hover:text-white transition-colors duration-200">Delivery Zones</a></li>
+            <li><a href="./#location-section" class="hover:text-white transition-colors duration-200">Our Story</a></li>
+            <li><a href="./#contact-footer" class="hover:text-white transition-colors duration-200">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Open hours -->
+        <div class="flex flex-col gap-4">
+          <h5 class="font-mono text-zinc-200 text-xs uppercase tracking-widest font-black">OPEN HOURS</h5>
+          <ul class="space-y-2.5 text-zinc-400 font-mono text-xs">
+            <li class="flex justify-between border-b border-zinc-900/60 pb-1.5">
+              <span>Mon – Sun</span>
+              <span class="text-zinc-300 font-bold">10:00 AM – 11:00 PM</span>
+            </li>
+            <li class="flex justify-between pb-1.5 border-b border-zinc-900/60">
+              <span class="text-amber-500">Peak Grill Hours</span>
+              <span class="text-zinc-300 font-bold">5:00 PM – 10:30 PM</span>
+            </li>
+          </ul>
+          <!-- Peak times badge -->
+          <div class="bg-amber-500/5 border border-amber-500/10 p-2.5 rounded-lg">
+            <p class="text-[10px] text-amber-500/80 font-sans leading-relaxed">
+              We deliver fresh pork meals across Awoshie and nearby areas in Accra within fast delivery time.
+            </p>
+          </div>
+        </div>
+
+        <!-- Col 4: Contact details -->
+        <div class="flex flex-col gap-4">
+          <h5 class="font-mono text-zinc-200 text-xs uppercase tracking-widest font-black">CONTACT US</h5>
+          <div class="space-y-3.5 text-zinc-550 text-zinc-500 font-sans leading-relaxed">
+            <p>
+              <strong class="text-zinc-400 font-display text-xs tracking-wide block mb-0.5">LOCATION</strong>
+              Awoshie, Accra – Greater Accra Region, Ghana.
+            </p>
+            <p>
+              <strong class="text-zinc-400 font-display text-xs tracking-wide block mb-0.5">TELEPHONE & MOMO</strong>
+              <a href="tel:+233540001122" class="text-zinc-300 hover:text-white font-mono font-bold transition-colors">+233 54 000 1122</a>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Merchant Information Card -->
+      <div class="border-t border-zinc-900 pt-8 mt-12 flex flex-col lg:flex-row items-center justify-between gap-6">
+        <div class="bg-zinc-950/70 border border-zinc-900 p-4.5 p-5 rounded-xl flex flex-col md:flex-row items-start md:items-center gap-4 w-full lg:max-w-2xl">
+          <div class="p-2 sm:p-2.5 rounded-lg bg-zinc-900 border border-zinc-850 shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-zinc-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+            </svg>
+          </div>
+          <div class="text-left font-sans">
+            <h6 class="text-xs font-black text-zinc-300 uppercase tracking-wide">SECURE MERCHANT TRANSACTION</h6>
+            <p class="text-[11px] text-zinc-500 leading-relaxed mt-0.5">
+              Park N Pork - Awoshie Outpost. We accept MTN MoMo, Telecel Cash, and VISA/Mastercard cards. Courier deliveries are dispatched via Bolt Food, Glovo, and Yango Delivery.
+            </p>
+          </div>
+        </div>
+        
+        <div class="flex flex-col sm:flex-row items-center gap-4 text-zinc-500 text-xs w-full lg:w-auto mt-2 lg:mt-0 lg:text-right">
+          <p class="font-mono text-[10px] sm:text-xs">© 2026 PARK N PORK GHANA LTD. ALL RIGHTS RESERVED.</p>
+          <div class="flex gap-3 font-mono text-[10px] sm:text-xs text-zinc-650">
+            <a href="#" class="hover:text-zinc-350 transition-colors">Terms of Service</a>
+            <span>•</span>
+            <a href="#" class="hover:text-zinc-350 transition-colors">Privacy Policy</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- DYNAMIC FLOATING TOASTS NOTIFIER PORTAL -->
+  <div id="toast-container" class="fixed bottom-24 sm:bottom-6 right-6 z-[9999] flex flex-col gap-2 max-w-sm w-full px-4 sm:px-0"></div>
+
+  <!-- QUICK VIEW MODAL (Step 1 Base Product matches) -->
+  <div id="quickview-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/85 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300">
+    <!-- Click outside backdrop closer -->
+    <div id="quickview-backdrop" class="absolute inset-0 cursor-zoom-out"></div>
+    
+    <!-- Modal panel -->
+    <div class="relative bg-brand-card w-full max-w-3xl rounded-xl border border-zinc-800 shadow-2xl overflow-hidden max-h-[90vh] flex flex-col transform scale-95 transition-all duration-300 z-10">
+      
+      <!-- Close Button -->
+      <button 
+        id="quickview-close" 
+        type="button" 
+        class="absolute top-4 right-4 z-20 flex items-center justify-center w-9 h-9 rounded-full bg-black/70 border border-zinc-800 text-zinc-400 hover:text-white hover:bg-brand-red hover:border-brand-red transition-all duration-200 cursor-pointer focus:outline-none"
+        title="Close quick view"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+
+      <!-- Scrollable content wrapping -->
+      <div class="overflow-y-auto h-full">
+        <div class="flex flex-col md:flex-row min-h-full">
+          
+          <!-- Left Column: Detailed food visual header -->
+          <div class="relative w-full md:w-1/2 aspect-video md:aspect-auto md:min-h-[420px] bg-zinc-950 flex items-center justify-center overflow-hidden">
+            <img 
+              id="modal-image" 
+              src="" 
+              alt="Food preview" 
+              class="w-full h-full object-cover object-center"
+              referrerpolicy="no-referrer"
+            >
+            <!-- Watermark text design element -->
+            <div class="absolute inset-0 bg-gradient-to-t from-brand-charcoal/90 via-transparent to-transparent"></div>
+            <span id="modal-stamp" class="absolute bottom-5 left-5 font-mono text-[10px] tracking-[0.2em] font-extrabold text-white bg-brand-red px-3 py-1 rounded-sm uppercase shadow-md"></span>
+          </div>
+
+          <!-- Right Column: Food informational spec block -->
+          <div class="w-full md:w-1/2 p-6 sm:p-8 flex flex-col justify-between">
+            <div class="mb-6">
+              <div class="flex items-center gap-2 mb-3">
+                <span id="modal-category" class="inline-block py-0.5 px-2 bg-zinc-900 border border-zinc-800 text-[10px] uppercase font-mono tracking-wider font-semibold text-zinc-350 rounded-sm"></span>
+                <span class="inline-block w-1.5 h-1.5 rounded-full bg-zinc-700"></span>
+                <span id="modal-id" class="font-mono text-[10px] text-zinc-500 uppercase"></span>
+              </div>
+
+              <h2 id="modal-name" class="font-display text-2xl sm:text-3xl font-black text-white leading-tight mb-2"></h2>
+              
+              <p id="modal-price" class="font-display font-medium text-xl text-amber-500 mb-4"></p>
+              
+              <div class="h-px bg-zinc-850 w-full mb-4"></div>
+
+              <h4 class="text-[9px] font-mono tracking-widest font-bold text-zinc-500 uppercase mb-1.5">Chef's Flavor Profile</h4>
+              <p id="modal-description" class="text-xs text-zinc-300 leading-relaxed font-sans mb-5"></p>
+
+              <h4 class="text-[9px] font-mono tracking-widest font-bold text-zinc-500 uppercase mb-2">Park N Pork Standard</h4>
+              <ul class="space-y-1.5 text-zinc-400 text-xs pl-1">
+                <li class="flex items-center gap-2">
+                  <span class="w-1 h-1 rounded-full bg-brand-red"></span>
+                  <span>Authentic, farm-fresh Ghanaian ingredients</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="w-1 h-1 rounded-full bg-brand-red"></span>
+                  <span>Marinated for 24 hours in local house spices</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="w-1 h-1 rounded-full bg-brand-red"></span>
+                  <span>Flame-kissed with high-heat natural oak charcoal</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Bottom trigger Action -->
+            <button 
+              id="modal-add-btn"
+              data-id=""
+              data-name=""
+              type="button" 
+              class="w-full py-3 bg-brand-red hover:bg-brand-red-light text-white rounded text-xs font-bold tracking-wider uppercase transition-all duration-300 transform active:scale-[0.98] cursor-pointer flex items-center justify-center gap-2 border border-brand-red shadow-lg shadow-brand-red/10 focus:outline-none"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+              </svg>
+              Add to Cart
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+  
+  <!-- CART DRAWER (Slide-over panel from the right) -->
+  <div id="cart-drawer" class="fixed inset-0 z-50 overflow-hidden opacity-0 pointer-events-none transition-all duration-300">
+    <!-- Backdrop overlay with blur -->
+    <div id="cart-drawer-backdrop" class="absolute inset-0 bg-black/80 backdrop-blur-sm cursor-pointer"></div>
+
+    <div class="absolute inset-y-0 right-0 max-w-full flex pl-10">
+      <!-- Sizing and panel container -->
+      <div id="cart-drawer-panel" class="w-screen max-w-md bg-brand-charcoal border-l border-zinc-900 shadow-2xl flex flex-col transform translate-x-full transition-transform duration-300 ease-out h-full">
+        
+        <!-- Header panel banner -->
+        <div class="px-5 py-6 bg-black border-b border-zinc-900 flex items-center justify-between select-none">
+          <div class="flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#f3ba0b]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="9" cy="21" r="1"></circle>
+              <circle cx="20" cy="21" r="1"></circle>
+              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+            </svg>
+            <h3 class="font-display font-black text-base uppercase tracking-widest text-[#f3ba0b]">
+              Cart
+            </h3>
+          </div>
+          <!-- Action Buttons -->
+          <div class="flex items-center gap-2">
+            <!-- Clear Cart button with trash delete icon -->
+            <button 
+              id="clear-cart-btn" 
+              type="button" 
+              class="text-zinc-500 hover:text-[#A31D1D] hover:border-[#A31D1D] hover:bg-zinc-900/40 transition-colors cursor-pointer focus:outline-none text-xs p-1.5 rounded border border-zinc-900 bg-zinc-950/40 flex items-center gap-1"
+              title="Clear all items at once"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="3 6 5 6 21 6"></polyline>
+                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                <line x1="10" y1="11" x2="10" y2="17"></line>
+                <line x1="14" y1="11" x2="14" y2="17"></line>
+              </svg>
+              <span class="text-[9px] font-mono font-black uppercase tracking-wider hidden sm:inline">Clear</span>
+            </button>
+            <!-- Close button -->
+            <button 
+              id="cart-drawer-close" 
+              type="button" 
+              class="text-zinc-500 hover:text-white transition-colors cursor-pointer focus:outline-none text-xs p-1.5 rounded border border-zinc-900 bg-zinc-950/40 hover:bg-zinc-900"
+            >
+              ✕
+            </button>
+          </div>
+        </div>
+
+        <!-- Scrollable items scroll area -->
+        <div id="cart-items-container" class="flex-1 overflow-y-auto p-5 space-y-4">
+          <!-- Populated dynamically via JS. If empty, see default empty platter -->
+          <div class="h-full flex flex-col items-center justify-center text-center p-6 bg-zinc-950/30">
+            <div class="p-4 rounded-full bg-zinc-900 border border-zinc-805 mb-4 select-none">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-[#f3ba0b]/60" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="9" cy="21" r="1"></circle>
+                <circle cx="20" cy="21" r="1"></circle>
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+              </svg>
+            </div>
+            <h4 class="font-display text-base font-bold text-zinc-100 uppercase mb-1">Your cart is empty...</h4>
+            <p class="text-xs text-zinc-400 max-w-xs leading-relaxed font-sans">
+              Choose from our prime wood-fired grilled options and cold drinks to start your order!
+            </p>
+            <button 
+              type="button" 
+              onclick="navigateToMenu()" 
+              class="mt-6 px-5 py-2.5 bg-[#faf5e6] hover:bg-[#ebdcb9] text-zinc-950 text-[11px] font-black uppercase tracking-widest rounded transition-all duration-200 cursor-pointer focus:outline-none shadow-md flex items-center justify-center gap-2 active:scale-[0.97]"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+              Browse Menu
+            </button>
+          </div>
+        </div>
+
+        <!-- Cart Footer sticky info and checkouts -->
+        <div class="p-5 border-t border-zinc-900 bg-black/60 sticky bottom-0 z-10">
+          <div id="cart-footer-details" class="space-y-4">
+            <div class="flex items-center justify-between text-sm select-none">
+              <span class="text-zinc-400 font-bold uppercase tracking-wider">Subtotal:</span>
+              <span id="cart-subtotal" class="font-display font-black text-amber-500 text-xl">GH₵0.00</span>
+            </div>
+            <div class="h-px bg-zinc-900 w-full mb-3"></div>
+            <button 
+              id="cart-checkout-btn"
+              type="button" 
+              class="w-full py-3.5 bg-[#A31D1D] hover:bg-[#C82525] text-white rounded text-sm font-extrabold tracking-widest uppercase transition-all duration-300 shadow-lg shadow-brand-red/10 active:scale-98 focus:outline-none flex items-center justify-center gap-2 cursor-pointer"
+            >
+              Proceed
+            </button>
+            <p class="text-[9px] text-center text-zinc-500 font-mono tracking-wide leading-normal">
+              Step 1 Ordering Simulation • Hot kitchen pick-up list updated in real-time
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- CHECKOUT MODAL (For order completion) -->
+  <div id="checkout-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/90 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300">
+    <div id="checkout-backdrop" class="absolute inset-0 cursor-pointer"></div>
+    <div class="relative bg-brand-card w-full max-w-md rounded-xl border border-zinc-800 shadow-2xl overflow-hidden max-h-[90vh] flex flex-col transform scale-95 transition-all duration-300 z-10">
+      
+      <!-- Modal Header -->
+      <div class="p-5 border-b border-zinc-900 bg-black flex items-center justify-between">
+        <h3 class="font-display text-sm font-black text-white uppercase tracking-widest">
+          COMPLETE YOUR PLATTER ORDER
+        </h3>
+        <button 
+          id="checkout-close" 
+          type="button" 
+          class="text-zinc-450 hover:text-white text-xs p-1 rounded hover:bg-zinc-900 focus:outline-none cursor-pointer"
+        >
+          ✕
+        </button>
+      </div>
+
+      <!-- Modal Content (Forms & list) -->
+      <form id="checkout-form" class="p-5 overflow-y-auto space-y-4 flex-1">
+        <div class="bg-zinc-900/60 p-3.5 rounded border border-zinc-800">
+          <h4 class="text-[10px] font-mono tracking-widest font-extrabold text-amber-500 uppercase mb-2">Order Summary</h4>
+          <div id="checkout-summary-list" class="space-y-1.5 text-xs text-zinc-350 max-h-[140px] overflow-y-auto">
+            <!-- Dynamic summary items list shown -->
+          </div>
+          <div class="h-px bg-zinc-805 bg-zinc-800 w-full my-2.5"></div>
+          <div class="flex items-center justify-between font-bold text-xs">
+            <span class="text-zinc-400 uppercase tracking-wide">Total Price:</span>
+            <span id="checkout-total-price" class="text-amber-500 font-display font-black text-sm">GH₵0.00</span>
+          </div>
+        </div>
+
+        <div class="space-y-3">
+          <div>
+            <label class="block text-[10px] font-mono font-bold text-zinc-400 uppercase tracking-widest mb-1.5">Your Full Name</label>
+            <input required type="text" id="checkout-name" placeholder="Kwame Mensah" class="w-full px-3 py-2 bg-zinc-900 border border-zinc-800 rounded text-xs text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-[#f3ba0b]" />
+          </div>
+          <div>
+            <label class="block text-[10px] font-mono font-bold text-zinc-400 uppercase tracking-widest mb-1.5">WhatsApp / Phone Number</label>
+            <input required type="tel" id="checkout-phone" placeholder="e.g. +233 24 123 4567" class="w-full px-3 py-2 bg-zinc-900 border border-zinc-800 text-xs rounded text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-[#f3ba0b]" />
+          </div>
+          <div>
+            <label class="block text-[10px] font-mono font-bold text-zinc-400 uppercase tracking-widest mb-1.5">Pick-up / Delivery Spot</label>
+            <select id="checkout-service" class="w-full px-3 py-2 bg-zinc-900 border border-zinc-800 text-xs rounded text-zinc-100 focus:outline-none focus:border-[#f3ba0b] cursor-pointer">
+              <option value="pickup">Self Pick-up (Awoshie Outpost)</option>
+              <option value="awoshie">Awoshie (Local Delivery - GH₵5)</option>
+              <option value="mccarthy">McCarthy Hill / Sowutuom (GH₵10)</option>
+              <option value="dansoman">Dansoman / Ablekuma / Pokuase (GH₵15)</option>
+              <option value="delivery">Custom Accra Delivery Courier (GH₵25)</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-[10px] font-mono font-bold text-zinc-400 uppercase tracking-widest mb-1.5">Special Grill Notes</label>
+            <textarea id="checkout-notes" rows="2" placeholder="e.g. Extra fat slices of red pork skin, high black shito, tender banku." class="w-full px-3 py-2 bg-zinc-900 border border-zinc-800 text-xs rounded text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-[#f3ba0b] resize-none"></textarea>
+          </div>
+        </div>
+
+        <button 
+          type="submit" 
+          class="w-full mt-4 py-3 bg-[#A31D1D] hover:bg-[#C82525] text-white rounded text-xs font-black tracking-widest uppercase transition-all duration-300 focus:outline-none cursor-pointer"
+        >
+          Confirm Wood-Fired Feast
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- FLOATING MOBILE BOTTOM NAVIGATION PILL (Displays on scroll over mobile viewports) -->
+  <div id="mobile-float-bar" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 md:hidden pointer-events-none opacity-0 translate-y-4 transition-all duration-300">
+    <div class="flex items-center gap-6 bg-zinc-950/95 backdrop-blur-xl border border-zinc-800 px-6 py-3 rounded-full shadow-[0_12px_32px_rgba(0,0,0,0.85)] pointer-events-auto">
+      
+      <!-- Home Icon Button -->
+      <button id="float-home-btn" type="button" class="flex flex-col items-center justify-center text-zinc-400 hover:text-[#f3ba0b] active:scale-95 transition-all outline-none cursor-pointer" title="Back to Top / Home">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mb-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+        </svg>
+        <span class="text-[9px] font-mono tracking-wider font-extrabold uppercase">Home</span>
+      </button>
+
+      <!-- Divider -->
+      <div class="h-6 w-[1px] bg-zinc-800/80"></div>
+
+      <!-- Search Icon Button -->
+      <button id="float-search-btn" type="button" class="flex flex-col items-center justify-center text-zinc-400 hover:text-[#f3ba0b] active:scale-95 transition-all outline-none cursor-pointer" title="Search Menu">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mb-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <span class="text-[9px] font-mono tracking-wider font-extrabold uppercase">Search</span>
+      </button>
+
+      <!-- Divider -->
+      <div class="h-6 w-[1px] bg-zinc-800/80"></div>
+
+      <!-- Cart Icon Button -->
+      <button id="float-cart-btn" type="button" class="flex flex-col items-center justify-center text-zinc-400 hover:text-[#f3ba0b] active:scale-95 transition-all outline-none relative cursor-pointer" title="Shopping Cart Platter">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mb-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <circle cx="9" cy="21" r="1"></circle>
+          <circle cx="20" cy="21" r="1"></circle>
+          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+        </svg>
+        <span class="text-[9px] font-mono tracking-wider font-extrabold uppercase">Cart</span>
+        <span id="float-cart-badge" class="absolute -top-1.5 -right-1.5 bg-[#f3ba0b] text-black text-[9px] font-black font-mono w-4 h-4 flex items-center justify-center rounded-full shadow border border-neutral-950 select-none transition-transform duration-200">0</span>
+      </button>
+
+    </div>
+  </div>
+
+  <!-- Main Vanilla script load -->
+  <script src="./script.js"></script>
+</body>
+</html>

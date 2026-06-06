@@ -1,0 +1,6 @@
+{
+  "name": "Pork Menu Grid",
+  "description": "A modern food menu grid with basic category and search filtering for Park N Pork.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
